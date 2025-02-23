@@ -11,5 +11,14 @@ export default defineConfig({
       }
     })
   ],
-  base: '/eznotes/', // Replace with your repository name
+  base: '/eznotes/',
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    rollupOptions: {
+      output: {
+        manualChunks: undefined
+      }
+    }
+  }
 })
