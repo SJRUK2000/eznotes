@@ -5,11 +5,15 @@ import Header from './components/Header';
 import NoteList from './components/NoteList';
 import NewNoteButton from './components/NewNoteButton';
 import NewNoteForm from './components/NewNoteForm';
+import { ThemeProvider } from './context/ThemeContext';
 
 const AppContainer = styled.div`
   max-width: 800px;
   margin: 0 auto;
   padding: 0 1rem;
+  background: var(--bg-primary);
+  min-height: 100vh;
+  transition: background-color 0.3s ease;
 `;
 
 const Main = styled.main`
@@ -49,17 +53,19 @@ function App() {
   };
 
   return (
-    <AppContainer>
-      <Header />
-      <Main>
-        <NoteList notes={notes} onDelete={deleteNote} />
-        {isFormVisible ? (
-          <NewNoteForm onSubmit={addNote} onCancel={() => setIsFormVisible(false)} />
-        ) : (
-          <NewNoteButton onClick={() => setIsFormVisible(true)} />
-        )}
-      </Main>
-    </AppContainer>
+    <ThemeProvider>
+      <AppContainer>
+        <Header />
+        <Main>
+          <NoteList notes={notes} onDelete={deleteNote} />
+          {isFormVisible ? (
+            <NewNoteForm onSubmit={addNote} onCancel={() => setIsFormVisible(false)} />
+          ) : (
+            <NewNoteButton onClick={() => setIsFormVisible(true)} />
+          )}
+        </Main>
+      </AppContainer>
+    </ThemeProvider>
   );
 }
 

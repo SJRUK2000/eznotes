@@ -9,15 +9,17 @@ interface NoteListProps {
 }
 
 const NoteContainer = styled.article`
-  background: white;
+  background: var(--bg-primary);
   border-radius: 8px;
   padding: 1.5rem;
   margin-bottom: 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s;
+  box-shadow: 0 2px 4px var(--shadow-color);
+  transition: transform 0.2s, background-color 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--border-color);
 
   &:hover {
     transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--shadow-color);
   }
 `;
 
@@ -31,7 +33,8 @@ const NoteHeader = styled.div`
 const NoteTitle = styled.h2`
   margin: 0;
   font-size: 1.25rem;
-  color: #333;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 `;
 
 const DeleteButton = styled.button`
@@ -55,21 +58,24 @@ const DeleteButton = styled.button`
 const NoteDate = styled.time`
   display: block;
   font-size: 0.875rem;
-  color: #666;
+  color: var(--text-secondary);
   margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
 `;
 
 const NoteContent = styled.p`
   margin: 0;
   line-height: 1.6;
-  color: #444;
+  color: var(--text-primary);
   white-space: pre-wrap;
+  transition: color 0.3s ease;
 `;
 
 const EmptyState = styled.div`
   text-align: center;
   padding: 2rem;
-  color: #666;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
 `;
 
 const NoteList: React.FC<NoteListProps> = ({ notes, onDelete }) => {

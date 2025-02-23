@@ -12,11 +12,12 @@ const FormContainer = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  background: white;
+  background: var(--bg-primary);
   padding: 1rem;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 -2px 10px var(--shadow-color);
   border-radius: 12px 12px 0 0;
   z-index: 1000;
+  transition: background-color 0.3s ease;
 `;
 
 const Form = styled.form`
@@ -29,29 +30,43 @@ const Form = styled.form`
 
 const Input = styled.input`
   padding: 0.75rem;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-color);
   border-radius: 4px;
   font-size: 1rem;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
 
   &:focus {
     outline: none;
-    border-color: #007bff;
-    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px var(--shadow-color);
+  }
+
+  &::placeholder {
+    color: var(--text-secondary);
   }
 `;
 
 const Textarea = styled.textarea`
   padding: 0.75rem;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-color);
   border-radius: 4px;
   font-size: 1rem;
   min-height: 150px;
   resize: vertical;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
 
   &:focus {
     outline: none;
-    border-color: #007bff;
-    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px var(--shadow-color);
+  }
+
+  &::placeholder {
+    color: var(--text-secondary);
   }
 `;
 
@@ -71,18 +86,18 @@ const Button = styled.button<ButtonProps>`
   border-radius: 4px;
   font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.2s;
 
-  background: ${(props: ButtonProps) => props.variant === 'primary' ? '#007bff' : '#f0f0f0'};
-  color: ${(props: ButtonProps) => props.variant === 'primary' ? 'white' : '#333'};
+  background: ${props => props.variant === 'primary' ? 'var(--accent-color)' : 'var(--bg-secondary)'};
+  color: ${props => props.variant === 'primary' ? '#ffffff' : 'var(--text-primary)'};
 
   &:hover {
-    background: ${(props: ButtonProps) => props.variant === 'primary' ? '#0056b3' : '#e0e0e0'};
+    background: ${props => props.variant === 'primary' ? '#0056b3' : 'var(--bg-hover)'};
   }
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 3px ${(props: ButtonProps) => props.variant === 'primary' ? 'rgba(0, 123, 255, 0.5)' : 'rgba(0, 0, 0, 0.1)'};
+    box-shadow: 0 0 0 3px ${props => props.variant === 'primary' ? 'rgba(0, 123, 255, 0.5)' : 'var(--shadow-color)'};
   }
 `;
 

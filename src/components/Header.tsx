@@ -1,14 +1,16 @@
 import styled from '@emotion/styled';
 import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
+import ThemeToggle from './ThemeToggle';
 
 const HeaderContainer = styled.header`
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background: #ffffff;
+  background: var(--bg-primary);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 1000;
+  transition: background-color 0.3s ease;
 `;
 
 const Nav = styled.nav`
@@ -23,16 +25,18 @@ const Nav = styled.nav`
 const Title = styled.h1`
   margin: 0;
   font-size: 1.5rem;
-  color: #333;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 `;
 
 const ButtonGroup = styled.div`
   display: flex;
-  gap: 0.5rem;
+  gap: 1rem;
+  align-items: center;
 `;
 
 const ScrollButton = styled.button`
-  background: #f0f0f0;
+  background: var(--bg-secondary);
   border: none;
   border-radius: 50%;
   width: 40px;
@@ -41,14 +45,15 @@ const ScrollButton = styled.button`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.2s ease;
+  color: var(--text-primary);
 
   &:hover {
-    background: #e0e0e0;
+    background: var(--bg-hover);
   }
 
   &:focus {
-    outline: 2px solid #007bff;
+    outline: 2px solid var(--accent-color);
     outline-offset: 2px;
   }
 `;
@@ -70,6 +75,7 @@ const Header = () => {
       <Nav>
         <Title>EzNotes</Title>
         <ButtonGroup>
+          <ThemeToggle />
           <ScrollButton
             onClick={scrollToTop}
             aria-label="Scroll to top"
